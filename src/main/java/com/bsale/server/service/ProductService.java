@@ -12,7 +12,7 @@ public interface ProductService {
 
 	public abstract Page<Product> listAllProducts(Pageable page);
 	public abstract Optional<Product> findProductById(Long id);
-	public abstract Page<Product> listProductsByCategory(Long cat, Pageable pageable);
+	public abstract Page<Product> listProductsByCategory(List<Long> cats, Pageable pageable);
 	public abstract List<Product> listProductsByName(String name);
 	public abstract Page<Product> listProductsByPrice(List<Long> cats, double min_price, double max_price, Pageable pageable);
 	public abstract Page<Product> listProductByNameAZ(List<Long> cats, Pageable page);

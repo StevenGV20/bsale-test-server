@@ -23,8 +23,8 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public Page<Product> listProductsByCategory(Long cat, Pageable pageable) {
-		return repository.listProductByCategory(cat, pageable);
+	public Page<Product> listProductsByCategory(List<Long> cats, Pageable pageable) {
+		return repository.listProductByCategory(cats, pageable);
 	}
 
 	@Override

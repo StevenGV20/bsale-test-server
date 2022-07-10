@@ -15,10 +15,10 @@ public interface ProductRepository extends JpaRepository<Product, Long>{
 	@Query("Select p from Product p where p.name like :name")
 	public abstract List<Product> listProductByName(@Param("name") String name);
 	
-	@Query("Select p from Product p where p.categoria.idcategory = :cat")
-	public abstract Page<Product> listProductByCategory(@Param("cat") Long cat, Pageable pageable);
+	@Query("Select p from Product p where p.categoria.idcategory in :cat")
+	public abstract Page<Product> listProductByCategory(@Param("cat") List<Long> cats, Pageable pageable);
 	
-	@Query("Select p from Product p where p.categoria.idcategory IN :cats order by p.name asc")
+	@Query("Select p from Product p where p.categoria.idcategory in :cats order by p.name asc")
 	public abstract Page<Product> listProductByNameAZ(@Param("cats") List<Long> cats, Pageable pageable);
 	
 	@Query("Select p from Product p where p.categoria.idcategory in :cats order by p.name desc")

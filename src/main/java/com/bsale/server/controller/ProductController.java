@@ -48,8 +48,15 @@ public class ProductController {
 	public Page<Product> listByCategory(@ApiParam(value = "El id de la categoria a filtrar", required = true, example = "1") Long cat, 
 			@ApiParam(value = "El numero de pagina a filtrar", required = true, example = "1")Integer page){
 		Pageable pageable = PageRequest.of(page, 8);
-		
-		return product.listProductsByCategory(cat, pageable);
+		List<Long> listCat = new ArrayList<Long>();
+		if(cat > 0) {
+			listCat.add(cat);
+		}else {
+			category.listCategory().forEach(c -> {
+				listCat.add(c.getIdcategory());
+			});
+		}
+		return product.listProductsByCategory(listCat, pageable);
 	}
 	
 	@GetMapping("/listByName")
@@ -71,16 +78,14 @@ public class ProductController {
 			@ApiParam(value = "El numero de pagina a filtrar", required = true, example = "1")Integer page){
 		Pageable pageable = PageRequest.of(page, 8);
 		Page<Product> lista = null;
-		String cats = "('"+cat+"')";
 		List<Long> listCat = new ArrayList<Long>();
 		if(cat > 0) {
 			listCat.add(cat);
 		}else {
 			category.listCategory().forEach(c -> {
 				listCat.add(c.getIdcategory());
-			});;
+			});
 		}
-		System.out.println("cats: "+cats);
 		switch (type) {
 			case "NameASC":
 				lista = product.listProductByNameAZ(listCat,pageable);
@@ -95,7 +100,7 @@ public class ProductController {
 				lista = product.listProductByPriceDesc(listCat,pageable);
 				break;
 			default:
-				lista = product.listAllProducts(pageable);
+				lista = product.listProductsByCategory(listCat,pageable);
 		}
 		
 		return lista;
