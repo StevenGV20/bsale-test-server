@@ -102,7 +102,7 @@ public class ProductController {
 			response.put("error", "No has ingresado ningun nombre");
 			return new ResponseEntity<Object>(response,new HttpHeaders(),HttpStatus.BAD_REQUEST);
 		}else {
-			return new ResponseEntity<Object>(product.listProductsByName(name),new HttpHeaders(),HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<Object>(product.listProductsByName(name),new HttpHeaders(),HttpStatus.ACCEPTED);
 		}
 	}
 	
