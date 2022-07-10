@@ -3,8 +3,10 @@ package com.bsale.server.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bsale.server.entity.Category;
@@ -15,6 +17,7 @@ import io.swagger.annotations.ApiResponse;
 
 @RestController
 @RequestMapping("/api/category")
+@CrossOrigin(origins = {"https://bsale-test-server.herokuapp.com/","http://localhost:5500"},methods = RequestMethod.GET)
 public class CategoryController {
 	
 	@Autowired
