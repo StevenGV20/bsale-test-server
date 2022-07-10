@@ -29,7 +29,7 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/api/product")
-@CrossOrigin(origins = {"https://bsale-test-server.herokuapp.com/","http://localhost:5500"},methods = RequestMethod.GET)
+@CrossOrigin(origins = {"https://bsale-test-svg-client.herokuapp.com","http://localhost:5500"},methods = RequestMethod.GET)
 public class ProductController {
 
 	@Autowired

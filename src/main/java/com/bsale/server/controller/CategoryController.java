@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiResponse;
 
 @RestController
 @RequestMapping("/api/category")
-@CrossOrigin(origins = {"https://bsale-test-server.herokuapp.com/","http://localhost:5500"},methods = RequestMethod.GET)
+@CrossOrigin(origins = {"https://bsale-test-svg-client.herokuapp.com","http://localhost:5500"},methods = RequestMethod.GET)
 public class CategoryController {
 	
 	@Autowired
