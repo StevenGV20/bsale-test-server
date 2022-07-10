@@ -97,7 +97,7 @@ public class ProductController {
 		@ApiResponse(code = 404, message = "Producto no encontrado")
 	})
 	public ResponseEntity<Object> listByName(@ApiParam(value = "El nombre del producto", required = true, example = "Energetica")String name){
-		if(name == null || name.isEmpty()) {
+		if(name == null) {
 			Map<String, Object> response = new HashMap<String, Object>();
 			response.put("error", "No has ingresado ningun nombre");
 			return new ResponseEntity<Object>(response,new HttpHeaders(),HttpStatus.BAD_REQUEST);
